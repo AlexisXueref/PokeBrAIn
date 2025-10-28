@@ -1,0 +1,9 @@
+# Fichiers et dossiers à exclure du dépôt Git
+# Environnement virtuel Python, fichiers compilés, sorties du modèle, datasets et checkpoints Jupyter
+
+venv/
+__pycache__/
+outputs/
+*.pth
+pokemon_dataset_advanced/
+*.ipynb_checkpoints/
