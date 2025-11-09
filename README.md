@@ -2,252 +2,202 @@
 
 **PokéBrAIn** : L'intelligence embarquée au service des cartes rares.
 
-Un système d'intelligence artificielle basé sur YOLO pour la détection et la classification des cartes Pokémon, avec une interface embarquée sur Raspberry Pi.
+Un système embarqué de reconnaissance automatique de cartes Pokémon en temps réel, utilisant l'intelligence artificielle sur NVIDIA Jetson Nano.
+
+---
+
+## 🎯 Objectif du Projet
+
+Ce projet vise à construire un système embarqué, autonome et transportable, capable d'identifier automatiquement des cartes Pokémon à partir d'images capturées en temps réel par une webcam. Le système fournit pour chaque carte des informations clés comme le nom, la rareté et la valeur estimée, tout en respectant les contraintes de performance et de robustesse face aux conditions réelles d'utilisation (brocantes, collections privées, etc.).
+
+---
+
+## 🛠️ Technologies Utilisées
+
+### Matériel
+
+- **NVIDIA Jetson Nano** : Plateforme embarquée pour l'exécution du modèle IA en temps réel
+- **Webcam Logitech C505e** : Capture des images des cartes
+- **Ordinateur Asus TUF A17** : Entraînement du modèle (carte graphique dédiée)
+
+### Logiciel
+
+- **Modèle IA** : ResNet-18 pré-entraîné sur ImageNet, puis fine-tuné sur notre dataset
+- **Framework** : PyTorch + TorchScript (optimisation pour l'embarqué)
+- **Vision par ordinateur** : OpenCV
+- **Conteneurisation** : Docker
+- **Dataset** : API pokemontcg.io (~18 831 cartes) + data augmentation (~370 000 images)
+
+---
+
+## 📊 Performances
+
+- **Accuracy de validation** : 97,96%
+- **Nombre de classes** : ~18 831 cartes Pokémon distinctes
+- **Dataset entraînement** : ~370 000 images (après data augmentation)
+- **Optimisation** : Conversion TorchScript pour inférence rapide sur Jetson Nano
 
 ---
 
 ## 📁 Structure du Projet
 
-Le projet suit une architecture claire et organisée pour faciliter la navigation et la maintenance :
-
 ```
-PokeBrAIn/
-├── examples/          # Exemples d'utilisation et démonstrations
-├── scripts/           # Scripts d'automatisation et utilitaires
-├── docs/              # Documentation complète du projet
-├── model/             # Architecture et définitions des modèles
-├── .gitignore         # Fichiers et dossiers ignorés par Git
-└── README.md          # Ce fichier
+PokéBrAIn/
+├── docs/                    # Documentation (rapport, présentation)
+├── examples/                # Exemples de résultats (matrices, courbes, images de test)
+├── model/                   # Instructions pour le modèle (README, config)
+├── scripts/                 # Scripts Python (data augmentation, entraînement, classification, caméra)
+├── .gitignore               # Fichiers ignorés par Git
+└── README.md                # Ce fichier
 ```
 
-### 🗂️ Rôle des Dossiers
-
-#### **`examples/`** - Exemples et Démonstrations
-- **Contenu** : Images de test, exemples de prédictions, notebooks de démonstration
-- **Usage** : 
-  - Placez vos images d'exemple dans `examples/images/`
-  - Les résultats de détection seront sauvegardés dans `examples/outputs/`
-  - Consultez les notebooks pour comprendre l'utilisation du modèle
-- **Cas d'usage** : Tester rapidement le modèle, valider les performances, créer des démonstrations
-
-#### **`scripts/`** - Scripts d'Automatisation
-- **Contenu** : Scripts Python pour l'entraînement, l'évaluation, le déploiement
-- **Usage** :
-  - `train.py` : Entraînement du modèle YOLO
-  - `evaluate.py` : Évaluation des performances
-  - `deploy_raspberry.py` : Scripts de déploiement sur Raspberry Pi
-  - Scripts utilitaires pour le traitement des données
-- **Cas d'usage** : Automatiser les workflows, faciliter les expérimentations
+### Rôle des Dossiers
 
 #### **`docs/`** - Documentation Complète
-- **Contenu** : Présentation, rapport technique, guides d'installation
-- **Usage** :
-  - Documentation architecturale du projet
-  - Guides d'utilisation détaillés
-  - Méthodologie et résultats expérimentaux
-  - Présentation du projet (slides, PDF)
-- **Cas d'usage** : Comprendre le projet en profondeur, référence technique
 
-#### **`model/`** - Définitions et Architecture
-- **Contenu** : Configuration YOLO, architecture du réseau, fichiers de définition
-- **Usage** :
-  - Fichiers de configuration `.yaml` pour YOLO
-  - Architecture des couches du réseau
-  - Fichiers de classe et de métadonnées
-- **⚠️ Important** : Les fichiers de poids (`.pth`, `.pt`) ne sont **pas versionnés** (voir .gitignore)
+- Rapport technique détaillé du projet
+- Présentation orale (slides)
+- Méthodologie, résultats et analyses
 
----
+#### **`examples/`** - Exemples et Résultats
 
-## 📂 Organisation des Fichiers Spécifiques
+- Images de test de cartes Pokémon
+- Cartes data-augmentées (exemples)
+- Matrice de confusion
+- Courbes de perte (loss evolution)
 
-### Images et Exemples
-- **Emplacement** : `examples/images/`
-- **Format accepté** : JPG, PNG
-- **Utilisation** : Images de test pour la détection
+#### **`model/`** - Modèle IA
 
-### Outputs et Résultats
-- **Emplacement** : `examples/outputs/`
-- **Contenu** : Images annotées, logs de prédiction, métriques
-- **⚠️ Statut Git** : Non versionné (généré automatiquement)
+- README avec instructions pour obtenir/utiliser le modèle
+- Configuration et architecture
+- **Note** : Les fichiers `.pth` (poids du modèle) ne sont PAS versionnés sur GitHub (trop volumineux)
 
-### Modèles Entraînés
-- **Emplacement** : `model/weights/` (local uniquement)
-- **Format** : `.pth`, `.pt`, `.onnx`
-- **⚠️ Statut Git** : **Non versionné** - Les poids sont trop volumineux pour Git
-- **Alternative** : Utiliser Git LFS ou un service de stockage externe (Google Drive, Hugging Face Hub)
+#### **`scripts/`** - Scripts Python
 
-### Documentation
-- **Présentation** : `docs/presentation.pdf`
-- **Rapport technique** : `docs/rapport_technique.pdf`
-- **Guides** : `docs/guides/`
-
----
-
-## 🚫 Fichiers et Dossiers Ignorés (.gitignore)
-
-Pour maintenir un dépôt propre et léger, les éléments suivants sont **automatiquement ignorés par Git** :
-
-### 🗃️ Datasets
-```
-dataset/
-data/
-*.zip
-```
-**Pourquoi ?** Les datasets peuvent être très volumineux (plusieurs Go). Partagez-les via des liens externes.
-
-### 🐍 Environnements Virtuels Python
-```
-venv/
-env/
-.venv/
-__pycache__/
-*.pyc
-*.pyo
-```
-**Pourquoi ?** Les environnements virtuels sont spécifiques à chaque machine. Utilisez `requirements.txt` pour partager les dépendances.
-
-### 🧠 Fichiers de Poids de Modèles
-```
-*.pth
-*.pt
-*.onnx
-model/weights/
-```
-**Pourquoi ?** Les fichiers de poids peuvent atteindre plusieurs centaines de Mo. Utilisez des services spécialisés pour les partager.
-
-### 📊 Fichiers Temporaires et Outputs
-```
-examples/outputs/
-logs/
-*.log
-.DS_Store
-```
-**Pourquoi ?** Ces fichiers sont générés automatiquement et varient selon les exécutions.
-
----
-
-## 📚 Documentation
-
-### Présentation du Projet
-📄 **[Présentation](docs/presentation.pdf)** - Vue d'ensemble, objectifs, architecture
-
-### Rapport Technique
-📄 **[Rapport Technique](docs/rapport_technique.pdf)** - Méthodologie détaillée, résultats, analyses
-
-### Guides d'Utilisation
-- **Installation** : `docs/guides/installation.md`
-- **Entraînement** : `docs/guides/training.md`
-- **Déploiement Raspberry Pi** : `docs/guides/raspberry_deployment.md`
+- **data_aug_v2.py** : Data augmentation des cartes (lumière, rotation, couleur...)
+- **telechargement_pokemon.py** : Téléchargement du dataset via l'API
+- **classification_v2.py** : Classification des cartes avec le modèle entraîné
+- **test_camera_v2.py** : Reconnaissance en temps réel via webcam (script principal)
 
 ---
 
 ## 🚀 Démarrage Rapide
 
 ### 1. Cloner le Dépôt
+
 ```bash
-git clone https://github.com/AlexisXueref/PokeBrAIn.git
-cd PokeBrAIn
+git clone https://github.com/AlexisXueref/PokéBrAIn.git
+cd PokéBrAIn
 ```
 
 ### 2. Installer les Dépendances
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # Sur Windows: venv\Scripts\activate
+source venv/bin/activate  # Sur Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 ```
 
-### 3. Télécharger les Poids du Modèle
-**⚠️ Important** : Les poids ne sont pas inclus dans le dépôt Git.
+### 3. Télécharger le Modèle
 
-- **Option 1** : Télécharger depuis [lien vers stockage externe]
-- **Option 2** : Entraîner votre propre modèle avec `scripts/train.py`
+⚠️ **Important** : Les poids du modèle (.pth) ne sont pas inclus dans le dépôt Git.
 
-Placez les fichiers `.pth` dans `model/weights/`
+Consultez `model/README.md` pour les instructions détaillées sur comment obtenir ou entraîner le modèle.
 
-### 4. Tester le Modèle
+### 4. Tester le Système
+
 ```bash
-python scripts/predict.py --image examples/images/test_card.jpg
+# Classification d'une image
+python scripts/classification_v2.py --image examples/test_card.jpg
+
+# Reconnaissance en temps réel avec webcam
+python scripts/test_camera_v2.py
 ```
 
-Les résultats seront sauvegardés dans `examples/outputs/`
+---
+
+## 📚 Documentation
+
+Pour plus de détails, consultez :
+
+- **[Rapport technique](docs/Rapport-PokéBrAIn.pdf)** : Méthodologie complète, résultats, analyses
+- **[Présentation](docs/Présentation%20PokéBrAIn%20XUEREF%20Alexis%20GUEH...)** : Vue d'ensemble du projet
+- **[README modèle](model/README.md)** : Instructions pour le modèle IA
 
 ---
 
-## 🎯 Bonnes Pratiques
+## ⚠️ Fichiers Ignorés (.gitignore)
 
-### ✅ À Faire
-- Placer vos images de test dans `examples/images/`
-- Documenter vos scripts dans `scripts/`
-- Mettre à jour la documentation dans `docs/` après modifications majeures
-- Utiliser des branches Git pour les nouvelles fonctionnalités
-- Tester vos modifications avec les exemples fournis
+Pour maintenir un dépôt léger, les éléments suivants sont automatiquement ignorés :
 
-### ❌ À Éviter
-- **Ne pas** commiter de fichiers `.pth` ou `.pt` (trop volumineux)
-- **Ne pas** versionner les datasets (utiliser des liens)
-- **Ne pas** commiter les environnements virtuels (`venv/`, `env/`)
-- **Ne pas** inclure les outputs générés automatiquement
-- **Ne pas** modifier `.gitignore` sans consultation de l'équipe
+- **Dataset** : `pokemon_dataset_advanced/`, `dataset/`, `*.zip`
+- **Environnements virtuels** : `venv/`, `env/`, `__pycache__/`
+- **Modèles entraînés** : `*.pth`, `*.pt`, `model/weights/`
+- **Outputs** : `outputs/`, `logs/`, `*.log`
 
 ---
 
-## 💡 Workflow Recommandé
+## 🎯 Workflow du Projet
 
-### Pour les Développeurs
-1. Créer une branche pour votre fonctionnalité
-2. Développer et tester localement
-3. Mettre à jour la documentation si nécessaire
-4. Soumettre une Pull Request avec description claire
+1. **Téléchargement du dataset** via l'API pokemontcg.io (~18 831 cartes)
+2. **Data augmentation** pour générer ~370 000 images variées
+3. **Entraînement** du modèle ResNet-18 (fine-tuning)
+4. **Conversion** en TorchScript pour optimisation
+5. **Déploiement** sur Jetson Nano avec Docker
+6. **Test en temps réel** avec webcam
 
-### Pour les Contributeurs Documentation
-1. Ajouter/modifier les fichiers dans `docs/`
-2. Vérifier les liens et références
-3. Maintenir la cohérence avec le code
+---
 
-### Pour l'Entraînement de Modèles
-1. Préparer votre dataset (hors Git)
-2. Configurer les paramètres dans `model/config.yaml`
-3. Lancer l'entraînement avec `scripts/train.py`
-4. Sauvegarder les poids localement (`model/weights/`)
-5. Partager via lien externe (Drive, HF Hub)
+## 🛠️ Problèmes Connus et Solutions
+
+### Limitations GPU sur Google Colab
+- **Solution** : Entraînement sur machine locale (Asus TUF A17)
+
+### Incompatibilités Docker/CUDA sur Jetson
+- **Solution** : Configuration spécifique des images Docker et versions CUDA
+
+### Problèmes de versions Python/OpenCV
+- **Solution** : Synchronisation des versions entre Jetson et environnement de développement
+
+### Qualité caméra insuffisante
+- **Solution** : Impression de cartes en taille agrandie pour les tests
+- **Amélioration future** : Ajout d'images floues et reflets dans le dataset
+
+---
+
+## 🔮 Prochaines Étapes
+
+### Application Mobile
+- Développer une app mobile type "Google Lens" pour les cartes Pokémon
+- Reconnaissance instantanée avec historique de cartes scannées
+- Intégration avec marchés de vente de cartes
+
+### Extensions Possibles
+- Autres jeux de cartes : Magic, Yu-Gi-Oh, cartes de sport (Panini)
+- Amélioration de la robustesse face aux conditions d'éclairage variables
+- Optimisation supplémentaire pour d'autres plateformes embarquées
 
 ---
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Consultez `docs/CONTRIBUTING.md` pour les guidelines.
-
-### Structure de Commit
-```
-type(scope): description courte
-
-Détails additionnels si nécessaire
-```
-
-**Types** : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou des pull requests.
 
 ---
 
-## 📞 Contact et Support
+## 📧 Contact
 
-Pour toute question ou suggestion :
-- **Issues** : [GitHub Issues](https://github.com/AlexisXueref/PokeBrAIn/issues)
-- **Discussions** : [GitHub Discussions](https://github.com/AlexisXueref/PokeBrAIn/discussions)
-
----
-
-## 📜 Licence
-
-*[À définir selon votre choix de licence]*
+- **GitHub** : [AlexisXueref/PokéBrAIn](https://github.com/AlexisXueref/PokéBrAIn)
+- **Issues** : [Ouvrir une issue](https://github.com/AlexisXueref/PokéBrAIn/issues)
 
 ---
 
 ## 🏆 Remerciements
 
-- **YOLO** : Framework de détection d'objets
-- **Ultralytics** : Implémentation YOLOv8
-- **Raspberry Pi Foundation** : Plateforme embarquée
-- **Communauté Pokémon TCG** : Passion et inspiration
+- **API Pokémon TCG** : [pokemontcg.io](https://pokemontcg.io) - Fourniture du dataset
+- **PyTorch** : Framework deep learning
+- **NVIDIA** : Jetson Nano et support CUDA
+- **Communauté Pokémon TCG** : Inspiration et passion
 
 ---
 
