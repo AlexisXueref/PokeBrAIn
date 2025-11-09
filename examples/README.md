@@ -5,7 +5,7 @@ Ce dossier contient des exemples et des résultats visuels du modèle PokeBrAIn.
 ## Contenu
 
 ### Images de test
-Ce dossier est destiné à contenir des images de Pokémon utilisées pour tester le modèle de classification.
+Ce dossier est destiné à contenir des images de cartes Pokémon utilisées pour tester le modèle de classification.
 
 ### Résultats visuels du modèle
 Les résultats de l'entraînement et de l'évaluation du modèle seront stockés ici, notamment :
