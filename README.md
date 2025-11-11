@@ -6,13 +6,13 @@ Un système embarqué de reconnaissance automatique de cartes Pokémon en temps 
 
 ---
 
-## 🎯 Objectif du Projet
+## Objectif du Projet
 
-Ce projet vise à construire un système embarqué, autonome et transportable, capable d'identifier automatiquement des cartes Pokémon à partir d'images capturées en temps réel par une webcam. Le système fournit pour chaque carte des informations clés comme le nom, la rareté et la valeur estimée, tout en respectant les contraintes de performance et de robustesse face aux conditions réelles d'utilisation (brocantes, collections privées, etc.).
+Ce projet en collaboration avec Tiago Guéhéneux vise à construire un système embarqué, autonome et transportable, capable d'identifier automatiquement des cartes Pokémon à partir d'images capturées en temps réel par une webcam. Le système fournit pour chaque carte des informations clés comme le nom, la rareté et la valeur estimée, tout en respectant les contraintes de performance et de robustesse face aux conditions réelles d'utilisation (brocantes, collections privées, etc.).
 
 ---
 
-## 🛠️ Technologies Utilisées
+## Technologies Utilisées
 
 ### Matériel
 
@@ -30,7 +30,7 @@ Ce projet vise à construire un système embarqué, autonome et transportable, c
 
 ---
 
-## 📊 Performances
+## Performances
 
 - **Accuracy de validation** : 97,96%
 - **Nombre de classes** : ~18 831 cartes Pokémon distinctes
@@ -39,7 +39,7 @@ Ce projet vise à construire un système embarqué, autonome et transportable, c
 
 ---
 
-## 📁 Structure du Projet
+## Structure du Projet
 
 ```
 PokéBrAIn/
@@ -81,7 +81,7 @@ PokéBrAIn/
 
 ---
 
-## 🚀 Démarrage Rapide
+## Démarrage Rapide
 
 ### 1. Cloner le Dépôt
 
@@ -100,7 +100,7 @@ pip install -r requirements.txt
 
 ### 3. Télécharger le Modèle
 
-⚠️ **Important** : Les poids du modèle (.pth) ne sont pas inclus dans le dépôt Git.
+**Important** : Les poids du modèle (.pth) ne sont pas inclus dans le dépôt Git.
 
 Consultez `model/README.md` pour les instructions détaillées sur comment obtenir ou entraîner le modèle.
 
@@ -116,7 +116,7 @@ python scripts/test_camera_v2.py
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 Pour plus de détails, consultez :
 
@@ -126,7 +126,7 @@ Pour plus de détails, consultez :
 
 ---
 
-## ⚠️ Fichiers Ignorés (.gitignore)
+## Fichiers Ignorés (.gitignore)
 
 Pour maintenir un dépôt léger, les éléments suivants sont automatiquement ignorés :
 
@@ -137,7 +137,7 @@ Pour maintenir un dépôt léger, les éléments suivants sont automatiquement i
 
 ---
 
-## 🎯 Workflow du Projet
+## Workflow du Projet
 
 1. **Téléchargement du dataset** via l'API pokemontcg.io (~18 831 cartes)
 2. **Data augmentation** pour générer ~370 000 images variées
@@ -148,7 +148,7 @@ Pour maintenir un dépôt léger, les éléments suivants sont automatiquement i
 
 ---
 
-## 🛠️ Problèmes Connus et Solutions
+## Problèmes Connus et Solutions
 
 ### Limitations GPU sur Google Colab
 - **Solution** : Entraînement sur machine locale (Asus TUF A17)
@@ -165,7 +165,7 @@ Pour maintenir un dépôt léger, les éléments suivants sont automatiquement i
 
 ---
 
-## 🔮 Prochaines Étapes
+## Prochaines Étapes
 
 ### Application Mobile
 - Développer une app mobile type "Google Lens" pour les cartes Pokémon
@@ -179,7 +179,7 @@ Pour maintenir un dépôt léger, les éléments suivants sont automatiquement i
 
 ---
 
-## 🤝 Contribution
+## Contribution
 
 Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou des pull requests.
 
@@ -192,7 +192,7 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou d
 
 ---
 
-## 🏆 Remerciements
+## Remerciements
 
 - **API Pokémon TCG** : [pokemontcg.io](https://pokemontcg.io) - Fourniture du dataset
 - **PyTorch** : Framework deep learning
