@@ -2,13 +2,13 @@
 
 Ce dossier regroupe tous les scripts Python nécessaires au fonctionnement du projet PokéBrAIn.
 
-## 📋 Contenu
+## Contenu
 
 Ce répertoire contient les scripts suivants :
 
 ---
 
-### 📥 Scripts de préparation des données
+### Scripts de préparation des données
 
 #### **`telechargement_pokemon.py`**
 - **Description** : Programme de téléchargement de toutes les cartes Pokémon depuis l'API pokemontcg.io
@@ -24,7 +24,7 @@ Ce répertoire contient les scripts suivants :
 
 ---
 
-### 🤖 Scripts de traitement et classification
+### Scripts de traitement et classification
 
 #### **`classification_v2.py`**
 - **Description** : Programme qui scanne et classe les images de cartes Pokémon enregistrées dans le même dossier
@@ -50,7 +50,7 @@ Ce répertoire contient les scripts suivants :
 
 ---
 
-## 🚀 Utilisation
+## Utilisation
 
 ### Ordre d'exécution recommandé
 
@@ -72,7 +72,7 @@ Ce répertoire contient les scripts suivants :
 
 ---
 
-## ⚙️ Prérequis
+## Prérequis
 
 - Python 3.7+
 - PyTorch 1.8+ (compatible avec la version utilisée sur Jetson Nano)
@@ -83,7 +83,7 @@ Ce répertoire contient les scripts suivants :
 
 ---
 
-## 📝 Notes importantes
+## Notes importantes
 
 - Les scripts de classification nécessitent le modèle entraîné : `model/best_pokemon_model.pth` (voir [model/README.md](../model/README.md) pour le téléchargement)
 - Pour l'utilisation sur Jetson Nano, assurez-vous d'avoir Docker installé et configuré
@@ -92,7 +92,7 @@ Ce répertoire contient les scripts suivants :
 
 ---
 
-## 📧 Contact
+## Contact
 
 Pour toute question concernant les scripts ou leur utilisation :
 
