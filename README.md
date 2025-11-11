@@ -185,7 +185,7 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou d
 
 ---
 
-## 📧 Contact
+## Contact
 
 - **GitHub** : [AlexisXueref/PokéBrAIn](https://github.com/AlexisXueref/PokéBrAIn)
 - **Issues** : [Ouvrir une issue](https://github.com/AlexisXueref/PokéBrAIn/issues)
@@ -201,4 +201,4 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou d
 
 ---
 
-**PokéBrAIn** - Détection intelligente de cartes Pokémon 🎴🧠✨
+**PokéBrAIn** - Détection intelligente de cartes Pokémon 
