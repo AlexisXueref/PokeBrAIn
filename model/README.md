@@ -16,17 +16,17 @@ Ce dossier contient les informations et instructions pour obtenir et utiliser le
 
 ---
 
-## 📥 Téléchargement du Modèle
+## Téléchargement du Modèle
 
-⚠️ **Important** : En raison de sa taille (240 Mo), le modèle n'est **pas inclus** dans le dépôt GitHub.
+**Important** : En raison de sa taille (240 Mo), le modèle n'est **pas inclus** dans le dépôt GitHub.
 
-### 🔗 Lien de Téléchargement
+### Lien de Téléchargement
 
 **Télécharger le modèle depuis Google Drive** :
 
-👉 **[Cliquez ici pour télécharger best_pokemon_model.pth](https://drive.google.com/drive/folders/1BUG8RTBIyn6XU4KDBwZ46T7fK8_i4Rmd?usp=drive_link)**
+**[Cliquez ici pour télécharger best_pokemon_model.pth](https://drive.google.com/drive/folders/1BUG8RTBIyn6XU4KDBwZ46T7fK8_i4Rmd?usp=drive_link)**
 
-### 📍 Instructions d'Installation
+### Instructions d'Installation
 
 1. **Téléchargez** le fichier `best_pokemon_model.pth` depuis le lien ci-dessus
 2. **Placez** le fichier dans ce dossier `model/` à la racine du projet
@@ -34,7 +34,7 @@ Ce dossier contient les informations et instructions pour obtenir et utiliser le
 
 ---
 
-## 🛠️ Utilisation du Modèle
+## Utilisation du Modèle
 
 ### Chargement du Modèle en Python
 
@@ -80,7 +80,7 @@ with torch.no_grad():
 
 ---
 
-## 📊 Structure du Modèle
+## Structure du Modèle
 
 Le modèle sauvegardé contient :
 
@@ -90,7 +90,7 @@ Le modèle sauvegardé contient :
 
 ---
 
-## 📝 Dataset d'Entraînement
+## Dataset d'Entraînement
 
 - **Source** : API pokemontcg.io
 - **Images originales** : ~18 831 cartes Pokémon
@@ -104,7 +104,7 @@ Le modèle sauvegardé contient :
 
 ---
 
-## ⚙️ Configuration et Optimisation
+## Configuration et Optimisation
 
 ### Pour Jetson Nano
 
@@ -127,23 +127,23 @@ traced_model.save('model/best_pokemon_model.pth')
 
 ---
 
-## 🚨 Notes Importantes
+## Notes Importantes
 
 ### Compatibilité
 
-⚠️ Assurez-vous d'utiliser la **même version de PyTorch** pour charger le modèle que celle utilisée pour l'entraînement.
+Assurez-vous d'utiliser la **même version de PyTorch** pour charger le modèle que celle utilisée pour l'entraînement.
 
 ### Sauvegarde
 
-💾 Conservez toujours une **copie de sauvegarde** du modèle entraîné.
+Conservez toujours une **copie de sauvegarde** du modèle entraîné.
 
 ### Git et Fichiers Volumineux
 
-🚫 Le fichier `.pth` est **ignoré par Git** (voir `.gitignore`) car il dépasse les limites de GitHub (100 Mo max).
+Le fichier `.pth` est **ignoré par Git** (voir `.gitignore`) car il dépasse les limites de GitHub (100 Mo max).
 
 ---
 
-## 🔄 Ré-entraînement
+## Ré-entraînement
 
 Si vous souhaitez ré-entraîner le modèle :
 
@@ -154,7 +154,7 @@ Si vous souhaitez ré-entraîner le modèle :
 
 ---
 
-## 📞 Contact
+## Contact
 
 Pour toute question concernant le modèle ou son utilisation :
 
@@ -163,4 +163,4 @@ Pour toute question concernant le modèle ou son utilisation :
 
 ---
 
-**Modèle PokeBrAIn** - ResNet-18 pour reconnaissance de cartes Pokémon 🎴🧠
+**Modèle PokeBrAIn** - ResNet-18 pour reconnaissance de cartes Pokémon 
